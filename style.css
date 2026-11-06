@@ -1,0 +1,194 @@
+:root {
+	--wc-main: rgba(14, 90, 139, 1);
+	--wc-main-60: rgba(60, 93, 128, .6);
+	--wc-green:rgba(106, 149, 57, 1);
+    --wc-green-60:rgba(113, 148, 53, .6);
+	--wc-light_blue:rgba(131, 182, 209, 1);
+	--wc-light_blue-60:rgba(131, 182, 209, .6);
+	--wc-purple:rgba(102, 76, 109, 1);
+    --wc-purple-60:rgba(102, 76, 109, .6);
+	--wc-tan:rgba(221, 219, 212, 1);
+    --wc-tan-60:rgba(221, 219, 212, .6);
+	--wc-dark-grey:rgba(9, 14, 23, 1);
+	--wc-font-sans-serif: font-family: 'Kanit', sans-serif;
+    --wc-font-header: font-family: 'Montserrat', sans-serif;
+	--wc-body-font-family: var(--wc-font-sans-serif);
+    --wc-code-background-dark: rgba(9, 14, 23, 1);
+	--section-head-margin: 28px;
+}
+body {display: flex;flex-direction: column;align-items: center;}
+header {display: flex;background-color: #fff;padding-left: 1vw;width: 100%;box-sizing: border-box;}
+header>img {width: 100px;margin-right: .5em;}
+h2 {/*margin-bottom: 0;*/ margin-top: 0px;width: 100%;
+.popoverButton {color: var(--wc-main); font-size:1.5rem;}
+} /*formally margin-bottom: 7px*/
+h3 {margin-bottom: 7px; margin-top: 0px;width: 100%;
+.popoverButton {color: var(--wc-green); font-size: 1.5rem;}
+}
+main {display: flex;flex-direction: column;align-items: center;min-width: 0;}
+footer{display: flex;flex-direction: column;align-items: center;border-top: 1px solid rgba(0, 0, 0, .2);width: 100%;background-color: #fff;}
+hr {width: 100%;opacity: .25;z-index: 1;}
+section {display: flex;flex-wrap: wrap;column-gap: 2em;border-bottom: none;width: 100%;}
+select{background-color: #fff; width: 100%;}
+select:focus{outline: 3px solid var(--wc-green);}
+input:focus{outline: 3px solid var(--wc-green);}
+label {font-weight: 700;text-wrap: pretty;}
+
+.description {max-width: 70vw;}
+.textHighlight {font-weight: 700; margin-top: -1px;margin-bottom: -1px;}
+#mainAndSidebar {display: grid;grid-template-columns: minmax(150px, 15vw) minmax(0, 1fr) minmax(240px, 24vw);gap: 1em;width: 100%;align-items: start;container:inline-size;}
+.smallQuickLinks {display: none;}
+.smallQuickLinks ul {list-style-type: none;max-width: 90%;display: flex;flex-wrap: wrap;justify-content: space-between;gap: .5em;padding-left: 0;}
+.smallQuickLinks li {display: inline-block;background-color: var(--wc-light_blue);padding: .25em .5em;border-radius: 5px;}
+.smallQuickLinks a {text-decoration: none;color: var(--wc-dark-grey);}
+.salaryPTO {margin-bottom: 1.5em;}
+#salaryGroup {display: flex;gap:1em;width: 100%;flex-wrap: wrap;}
+.salaryInput {display: flex;flex-direction: column;width: 25%;}
+.salaryInput input {width: 100%;min-width: 0;box-sizing: border-box;}
+#pto {display: flex;flex-direction: column;}
+.ptoContainer {container: pto/inline-size; display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; width: 100%; justify-content: space-around;gap: 1em; 
+	.nonfillableContainer {display: flex; flex-direction: column;background-color: var(--wc-tan); /*width: 25cqw;*/align-items: center;border-radius: 5px;
+	& p {margin: 0;}
+}
+}
+.ptoNumberContainer {display: flex;flex-direction: column;justify-content: space-around;}
+#retirement {display: flex;flex-direction: column;}
+.retirementNonfillable {display: grid;grid-template-columns: 1fr 1fr 1fr 1fr;gap: 1em;width: 100%;
+	& .nonfillableContainer {background-color:var(--wc-tan); /*width: 25%;*/align-items: center;border-radius:5px;
+		& p {margin: 0;}}}
+.retirementContainer {display: flex; width: 100%; justify-content: space-around;}
+.retirementNumberContainer {display: flex;flex-direction: column;justify-content: space-around;}
+.nonfillableContainer {display: flex; flex-direction: column;}
+.medicalNonfillable {container: medical/inline-size; display: grid;grid-template-columns: 1fr 1fr 1fr 1fr; gap:1em;width: 100%;
+& .nonfillableContainer {background-color:var(--wc-tan); /*width: 25%;*/align-items: center;border-radius:5px;
+	& p {margin: 0;}}
+}
+.ptoNumbers {font-weight: 700;}
+.retirementNumbers {font-weight: 700;}
+.medicalNumbers {font-weight:700;}
+.labelInputPair {display: flex;flex-direction: column;/*align-items: center;*/width: 30%;/*margin-bottom: 0.5em;*/}
+.labelSelectPair {display: flex;flex-direction: column;/*align-items: center;*/width: 30%;margin-bottom: 0.5em;}
+#salaryGroup>.labelInputPair {display: flex;flex-direction: column;/*align-items: center;*/width: 24%;margin-bottom: 0.5em;justify-content: flex-end;}
+.inputGroup {display: flex;gap: 2em;}
+.or {font-weight: bold; align-content: center;}
+#totalCompensation {font-weight: 700; color: var(--wc-main); font-size: 1.25rem;}
+#submitBtn {padding: 10px;
+:hover {cursor: pointer;}
+}
+.additionalInfo {display: flex;justify-content: center;flex-direction: column;}
+.submit {justify-content: center;margin-bottom: 1em;}
+.disclaimer {max-width: 80vw;}
+
+.leftSidebar {container: leftSideBar/inline-size; min-width: 0;background-color: var(--wc-light_blue);border-radius: 0 4% 4% 0;display: flex; flex-direction:column; height: fit-content;position:sticky;top:0;z-index:10;padding-top:30px;padding-bottom:30px;padding-right:1vw;
+ h2 {margin-bottom: -10px;color: #000;text-align: right;}
+& ul {list-style-type: none;text-align: right;max-width: 90%;} /*padding-right: 1vw;*/
+& a {color: #000;}
+/* @container (width < 300px) {
+	display: none;
+} */
+}
+
+.spacer {margin-bottom: 1.5em;}
+.annualPremium {display:none;}
+.rightSidebar {display: flex;min-width:0;flex-direction: column;text-align: center;position:sticky;top:0; align-items: center;max-width: 300px;margin-right: 1em;}
+
+#calculateButton {width: fit-content; margin-top: 1em;}
+/*!Form Validation*/
+.disabled {	pointer-events: none;	opacity: 0.5;}
+#calculateButton:disabled {opacity: .5;cursor: not-allowed;}
+#validationMessage {color: #9b2424;}
+#validationMessage:empty {display: none;}
+
+/*!Popovers*/
+.popoverButton {background: transparent;border: 0;cursor: pointer;font-weight: 700;min-width: 44px;min-height: 44px;}
+.popoverButton:focus-visible,
+.popoverCloseButton:focus-visible {outline: 3px solid var(--wc-main);outline-offset: 3px;}
+.popoverCloseButton {display: block;margin-top: 1rem;min-height: 44px;padding: .5rem 1rem;cursor: pointer;}
+
+/* Browsers without anchor positioning get a centered, scrollable popover. */
+.popover-content {
+	position: fixed;
+	inset: 0;
+	margin: auto;
+	box-sizing: border-box;
+	width: min(50ch, calc(100vw - 2rem));
+	max-height: calc(100vh - 2rem);
+	max-height: calc(100dvh - 2rem);
+	overflow: auto;
+	background: #fff;
+	color: #000;
+	padding: 1rem 1.5rem;
+	border: 3px solid #000;
+	border-radius: 1rem;
+}
+
+@supports (anchor-name: --popover) and (position-area: top) {
+	.popover-content {
+		inset: auto;
+		margin: 0 0 1em;
+		position-area: top;
+		position-try-fallbacks: flip-block, top span-right, bottom span-right, top span-left, bottom span-left;
+	}
+	#salaryInfoButton {anchor-name: --salaryInfo;}
+	#salaryInfo {position-anchor: --salaryInfo;}
+	#ptoInfoButton {anchor-name: --ptoInfo;}
+	#ptoInfo {position-anchor: --ptoInfo;}
+	#retirementInfoButton {anchor-name: --retirementInfo;}
+	#retirementInfo {position-anchor: --retirementInfo;}
+	#medicalBenefitsInfoButton {anchor-name: --medicalBenefitsInfo;}
+	#medicalBenefitsInfo {position-anchor: --medicalBenefitsInfo;}
+}
+.voluntaryBenefits>p {width: 100%;}
+
+/*!Media Queries  */
+@media (width <  1400px) {
+	.leftSidebar {
+		& li {padding-bottom: 5px;}
+	}
+}
+
+@media (width < 1000px) {
+	#mainAndSidebar {display: grid;grid-template-columns: minmax(0, 1fr) minmax(200px, 30vw);align-items: start;}
+	main {grid-column: 1;grid-row: 1;width: auto;min-width: 0;padding-left: 1em;}
+	.leftSidebar {display: none;}
+	.smallQuickLinks {display: block;}
+	.rightSidebar {grid-column: 2;grid-row: 1;min-width: 0;max-width: 100%;}
+	.ptoContainer {grid-template-columns: 1fr 1fr;}
+	.medicalNonfillable {grid-template-columns: 1fr 1fr;}
+	.retirementNonfillable {grid-template-columns: 1fr 1fr;}
+}
+
+@media (width < 800px) {
+	body {width: 100vw;}
+	main {width: auto;}
+	/* .mainAndSidebar {flex-direction: column;} */
+	.annualSalary {display: flex;flex-direction: column;width: 100%;}
+	#salaryGroup {flex-direction: column;/*align-items: center;*/gap:0;
+	& .labelInputPair {width: 100%;}}
+	.salaryInput {width: 100%;}
+	.or {padding: 5px;margin: 0;text-align: center;}
+	.medicalBenefits {flex-direction: column;/*align-items: center;*/width: 100%;
+	& .labelSelectPair {width: 100%;}}
+	.labelInputPair {width: 80VW;}
+	.lifeInsurance {flex-direction: column;/*align-items: center;*/}
+	.rothContribution {flex-direction: column;/*align-items: center;*/}
+	.personalInfo {flex-direction: column;}
+	.volInsuranceSelfSelection {flex-direction: column;}
+	.disability {flex-direction: column;}
+
+}
+
+@media (width <= 600px) {
+	body {width: 95vw;}
+	main {width: 90vw;margin-left: 5vw;padding-left: 0;}
+	#mainAndSidebar {display: flex;flex-direction: column;margin-bottom: 1em; }
+	.leftSidebar {width: 90vw; border-radius: 5%;align-self: center;position:static;
+	& h2 {text-align: center;}
+	& ul {text-align: center;padding-inline-start: 0;}
+}
+	.rightSidebar {position: static;min-width: 90vw;padding-left:5vw;padding-right: 5vw;}
+	.inputGroup {flex-direction: column;}
+	#salaryGroup>.labelInputPair {display: flex;flex-direction: column;/*align-items: center;*/width:80VW;}
+	.labelSelectPair {width: 80VW;}
+}
+

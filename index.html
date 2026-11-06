@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WilCo Total Compensation Estimator</title>
+  <link rel="stylesheet" href="https://apps.wilco.org/utils/wilcostyle/wilcoStyle.css" />
+  <link rel="stylesheet" href="style.css?v=20261026-3" />
+
+</head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-98KQ9YB0J3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+
+  gtag('config', 'G-98KQ9YB0J3');
+</script>
+
+<body>
+  <!--This is the JS only version-->
+  <header>
+    <img src="https://apps.wilco.org/utils/wilcoMark.svg" alt="Williamson County Logo" />
+    <h1>WilCo Total Compensation Estimator</h1>
+  </header>
+  <div class="description">
+    <p>
+      At Williamson County, our employees enjoy a total compensation package that goes beyond salary alone -
+      competitive pay, a state-leading retirement plan, and comprehensive benefit options set us apart. This
+      interactive estimator illustrates the annual total compensation an individual (and their family!) receives when
+      they work for Williamson County. Supplemental information on each type of compensation can be found by clicking
+      the information icons (<span class="infoIcon">ⓘ</span>) next to the section titles.
+    </p>
+    <p class="textHighlight">To use this tool, type in your salary and hit ENTER, then select your benefit plan option
+      and coverage
+      type, and click the “Calculate” button to see your annual total compensation estimate.
+    </p>
+    <p><i>Please contact <a href="mailto:humanresources@wilco.org">Human Resources</a> if you have any
+        questions or need help using this compensation estimator.</i></p>
+  </div>
+  <hr />
+  <div id="mainAndSidebar">
+    <aside class="leftSidebar">
+      <h2>Quick Links</h2>
+      <ul>
+        <li><a target="_blank"
+            href="https://www.wilcotx.gov/DocumentCenter/View/16675/Additional-WilCo-Employee-Benefits-and-Perks">Additional
+            Perks</a>
+        </li>
+        <li><a target="_blank"
+            href="https://www.wilcotx.gov/DocumentCenter/View/16674/2026-Employee-Benefits-Enrollment-Guide">Employee
+            Benefits Guide</a></li>
+        <li><a target="_blank" href="https://www.nrsforu.com/rsc-web-preauth/index.html">Nationwide 457</a></li>
+        <li><a target="_blank"
+            href="https://www.wilcotx.gov/DocumentCenter/View/9180/Recruitment---Stipends?bidId=">Stipends</a></li>
+        <li><a target="_blank" href="https://www.tcdrs.org">TCDRS</a></li>
+        <li><a target="_blank" href="/hr/benefitscalculator/Wilco_One_Wellness_Program_Brochure.pdf">Wellness
+            Brochure</a></li>
+        <li><a target="_blank" href="https://www.wilcotx.gov/470/Careers">WilCo Careers</a></li>
+        <li><a target="_blank" href="https://apps.wilcotx.gov/hr/benefits-cost-estimator/">Benefits Cost Estimator</a>
+        </li>
+      </ul>
+    </aside>
+    <main>
+      <section class="smallQuickLinks">
+      <h2>Quick Links</h2>
+      <ul>
+        <li><a target="_blank"
+            href="https://www.wilcotx.gov/DocumentCenter/View/16675/Additional-WilCo-Employee-Benefits-and-Perks">Additional
+            Perks</a>
+        </li>
+        <li><a target="_blank"
+            href="https://www.wilcotx.gov/DocumentCenter/View/16674/2026-Employee-Benefits-Enrollment-Guide">Employee
+            Benefits Guide</a></li>
+        <li><a target="_blank" href="https://www.nrsforu.com/rsc-web-preauth/index.html">Nationwide 457</a></li>
+        <li><a target="_blank"
+            href="https://www.wilcotx.gov/DocumentCenter/View/9180/Recruitment---Stipends?bidId=">Stipends</a></li>
+        <li><a target="_blank" href="https://www.tcdrs.org">TCDRS</a></li>
+        <li><a target="_blank" href="/hr/benefitscalculator/Wilco_One_Wellness_Program_Brochure.pdf">Wellness
+            Brochure</a></li>
+        <li><a target="_blank" href="https://www.wilcotx.gov/470/Careers">WilCo Careers</a></li>
+        <li><a target="_blank" href="https://apps.wilcotx.gov/hr/benefits-cost-estimator/">Benefits Cost Estimator</a>
+        </li>
+      </ul>
+          </section>
+      <section class="salaryPTO">
+        <h2>Salary, Paid Time Off (PTO), and Retirement</h2>
+        <section id="salary" class="spacer">
+          <h3 class="popover-container">Salary (One of the three below is required) <button
+              id="salaryInfoButton" type="button" aria-label="Salary information" class="popoverButton" popovertarget="salaryInfo">ⓘ</button></h3>
+          <div id="salaryInfo" class="popover-content" popover="auto" role="region" aria-labelledby="salaryInfoTitle">
+            <h3 id="salaryInfoTitle">Salary</h3>
+            <p>Salaries for current job openings can be found in the job postings listed on the <a
+                href="https://www.governmentjobs.com/careers/williamsonco" target="_blank">WilCo Careers page</a>.
+              Approximate annual pay for EMS field positions can be found <a
+                href="https://www.wilcotx.gov/369/Work-for-WCEMS" target="_blank">here</a>. The salaries entered below
+              are meant to reflect the annual base salary of a full-time employee. The Estimator is not intended to
+              include overtime, <a href="https://www.wilcotx.gov/DocumentCenter/View/9180/"
+                target="_blank">stipends</a>
+              (TCOLE Certification, Field Training Officer, etc.), tax deductions, etc. or to reflect actual take home
+              pay.</p>
+            <button type="button" class="popoverCloseButton" popovertarget="salaryInfo" popovertargetaction="hide">Close</button>
+          </div>
+          <div id="salaryGroup">
+            <div class="salaryInput labelInputPair">
+              <label for="hourlyInput">Hourly Salary</label>
+              <input type="number" name="hourlyInput" id="hourlyInput" class="textInput" placeholder="$000.00"
+                min="0" step="any" aria-describedby="validationMessage" />
+            </div>
+            <p class="or">(OR)</p>
+            <div class="salaryInput labelInputPair">
+              <label for="biweeklyInput">Bi-Weekly Salary</label>
+              <input type="number" name="biweeklyInput" id="biweeklyInput" class="textInput" placeholder="$000.00"
+                min="0" step="any" aria-describedby="validationMessage" />
+            </div>
+            <p class="or">(OR)</p>
+            <div class="salaryInput labelInputPair">
+              <label for="yearlyInput">Yearly Salary</label>
+              <input type="number" name="yearlyInput" id="yearlyInput" class="textInput" placeholder="$000.00"
+                min="0" step="any" aria-describedby="validationMessage" />
+            </div>
+          </div>
+        </section>
+        <section id="pto" class="spacer">
+          <h3 class="popover-container">PTO <button id="ptoInfoButton" type="button" aria-label="PTO information" class="popoverButton"
+              popovertarget="ptoInfo">ⓘ</button></h3>
+          <div id="ptoInfo" class="popover-content" popover="auto" role="region" aria-labelledby="ptoInfoTitle">
+            <h3 id="ptoInfoTitle">PTO</h3>
+            <p>The PTO rates listed below are what a full-time employee would accrue in the first year of their
+              employment with Williamson County. Accrual rates increase with tenure and can be found, along with
+              additional information on paid time off, in the <a
+                href="https://www.wilcotx.gov/DocumentCenter/View/13138/Current-WilCo-Employee-Policy-Manual#page=14"
+                target="_blank">Williamson County Employee Policy Manual</a>.</p>
+            <button type="button" class="popoverCloseButton" popovertarget="ptoInfo" popovertargetaction="hide">Close</button>
+          </div>
+          <p class="textHighlight">IMPORTANT! The dollar amounts listed below are included in your annual salary. They
+            are not paid in addition to your annual salary.</p>
+          <div class="ptoContainer">
+            <div class="nonfillableContainer" id="vacation">
+              <p>Vacation</p>
+              <div class="ptoNumbers" id="vacationTotal">$000.00</div>
+              <p>80 hours/year</p>
+            </div>
+            <div class="nonfillableContainer" id="sick">
+              <p>Sick Leave</p>
+              <div class="ptoNumbers" id="sickTotal">$000.00</div>
+              <p>104 hours/year</p>
+            </div>
+            <div class="nonfillableContainer" id="floatingHoliday">
+              <p>Floating Holidays</p>
+              <div class="ptoNumbers" id="floatingHolidayTotal">$000.00</div>
+              <p>16 hours/year</p>
+            </div>
+            <div class="nonfillableContainer" id="holidays">
+              <p>County Wide Paid Holidays</p>
+              <div class="ptoNumbers" id="holidayTotal">
+                $000.00
+              </div>
+              <p>112 hours/year</p>
+            </div>
+          </div>
+        </section>
+        <section id="retirement" class="spacer">
+          <h3 class="popover-container">Retirement <button id="retirementInfoButton" type="button" aria-label="Retirement information"
+              class="popoverButton" popovertarget="retirementInfo">ⓘ</button></h3>
+          <div id="retirementInfo" class="popover-content" popover="auto" role="region" aria-labelledby="retirementInfoTitle">
+            <h3 id="retirementInfoTitle">Retirement</h3>
+            <p>7% is deposited into your account and earns 7% compound interest annually. The benefit WilCo provides is
+              based on your final account balance and employer matching. Our current match rate is 250%! One of the
+              highest in the state of Texas. Once County employees become vested at 8 years of service (either directly
+              with Williamson County or through combined service time from other qualified Texas retirement systems),
+              you have a right to a lifetime monthly benefit that will include employer matching when you reach
+              retirement eligibility and choose to retire. There are several ways to meet TCDRS retirement eligibility
+              requirements. To find out more about the County's retirement program and/or eligibility requirements,
+              please visit <a href="https://www.tcdrs.org" target="_blank">TCDRS</a>.
+            </p>
+            <button type="button" class="popoverCloseButton" popovertarget="retirementInfo" popovertargetaction="hide">Close</button>
+          </div>
+          <p class="textHighlight">IMPORTANT! Retirement contributions only apply once an employee is vested (completes
+            8 years of service).</p>
+          <div class="retirementNonfillable">
+            <div class="nonfillableContainer retirementNumberContainer" id="retirementNumber">
+              <p>Wilco Retirement Contribution</p>
+              <div class="retirementNumbers" id="retirementTotal">$000.00</div>
+            </div>
+          </div>
+        </section>
+      </section>
+      <section class="medicalBenefits">
+        <h2>Medical Benefits <button id="medicalBenefitsInfoButton" type="button" aria-label="Medical Benefits information" class="popoverButton"
+            popovertarget="medicalBenefitsInfo">ⓘ</button></h2>
+        <div id="medicalBenefitsInfo" class="popover-content" popover="auto" role="region" aria-labelledby="medicalBenefitsInfoTitle">
+          <h3 id="medicalBenefitsInfoTitle">Medical Benefits</h3>
+          <p>WilCo's Annual Contribution is based on 2026 benefit plan costs and is subject to change each year. If the
+            HSA medical plan is selected, WilCo's Annual Contribution will include the seed money contributed each year
+            by the County. Regardless of the medical plan selected, Your Annual Premium is calculated using the
+            discounted rates (employees must meet the annual Wellness Points requirement to receive discounted rates).
+            Detailed information on medical benefit plans, as well as all additional benefits, are available in the <a
+              href="https://www.wilcotx.gov/DocumentCenter/View/16674/2026-Employee-Benefits-Enrollment-Guide"
+              target="_blank">Williamson County Employee
+              Benefits Guide</a>.</p>
+          <button type="button" class="popoverCloseButton" popovertarget="medicalBenefitsInfo" popovertargetaction="hide">Close</button>
+        </div>
+        <div class="labelSelectPair">
+          <label for="medicalCoverage">Medical Coverage? (Required)</label>
+            <select name="medicalCoverage" id="medicalCoverage" required>
+              <option value="">Select</option>
+              <option value="Yes">Yes</option>
+              <option value="No">No</option>
+            </select>
+        </div>
+        <div class="labelSelectPair">
+          <label for="medicalPlan">Medical Plans</label>
+          <select name="medicalPlan" id="medicalPlan">
+            <option value="">Select</option>
+            <option value="hsa">HDHP with HSA</option>
+            <option value="choice">Choice</option>
+            <option value="choicePlus">Choice Plus</option>
+          </select>
+        </div>
+        <div class="labelSelectPair">
+          <label for="medicalCovered">Who will be Covered?</label>
+          <select name="medicalCovered" id="medicalCovered">
+            <option value="">Select</option>
+            <option value="coverSelf">Self</option>
+            <option value="coverSpouse">Self & Spouse</option>
+            <option value="coverDependents">Self & Children</option>
+            <option value="coverFamily">Self, Spouse & Children</option>
+          </select>
+        </div>
+      </section>
+      <section class="medicalNonfillable">
+        <div class="nonfillableContainer">
+          <div class="medicalNumberContainer" id="medical">
+            <p>Wilco Contribution</p>
+            <div class="medicalNumbers" id="contributionTotal">$000.00</div>
+          </div>
+        </div>
+        <div class="nonfillableContainer annualPremium">
+          <div class="medicalNumberContainer" id="annualPremium">
+            <p>Your Annual Premium</p>
+            <div class="medicalNumbers" id="premiumTotal">$000.00</div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+    <aside class="rightSidebar">
+      <h2>Total Estimated Annual Compensation</h2>
+      <p>PTO is included as a portion of the annual salary</p>
+      <span id="totalCompensation">$000.00</span>
+      <canvas id="compensationChart"></canvas>
+      <button id="calculateButton" class="button button__blue" type="button" aria-describedby="validationMessage">Calculate</button>
+      <p id="validationMessage" role="status" aria-live="polite"></p>
+      <i>If you have made changes please click "Calculate" again.</i>
+    </aside>
+  </div>
+
+  <hr />
+  <p class="disclaimer">
+    <strong>DISCLAIMER:</strong> The information presented in the <span class="fw-bold">Total Compensation
+      Estimator</span> is intended solely for informational and illustrative purposes and is not intended to be a
+    substitute for formal financial planning advice. The data provided above serves as a general estimate of the
+    compensation earned by a full-time employee and should not be construed as an offer of employment, an employment
+    contract, or a guarantee of compensation. Williamson County gives no warranty and assumes no responsibility or
+    liability for the accuracy of the information and data within the Total Compensation Estimator. In no event will
+    Williamson County be held responsible or liable for any claims, damages, losses, expenses, costs, or liabilities
+    arising directly or indirectly from your use of this estimator or the data.
+  </p>
+  <footer>
+    <p>
+      512-943-1533 |
+      <a target="_blank" href="mailto:humanresources@wilco.org">Human Resources</a>
+    </p>
+    <p>
+      © <span id="currentYear"></span> - WilCo Total Compensation Estimator
+    </p>
+  </footer>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var currentYear = new Date().getFullYear();
+      document.getElementById("currentYear").textContent = currentYear;
+    });
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/patternomaly/1.3.2/patternomaly.min.js"></script>
+  <script src="benefits.js?v=20261026-3"></script>
+
+</body>
+
+
+
+</html>
