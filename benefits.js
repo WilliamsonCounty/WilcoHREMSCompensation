@@ -57,16 +57,18 @@ const medicalPlans = {
 };
 
 const money = new Intl.NumberFormat('en-US', {style: 'currency', currency: 'USD'});
+// EMS scheduled pay: 40 regular hours + 16 hours at time-and-a-half each week.
+// This is 3,328 regular-rate equivalents, not actual hours worked per year.
+const annualPayMultiplier = (40 + 16 * 1.5) * 52;
 const salaryInputs = {
   hourly: document.getElementById('hourlyInput'),
-  biweekly: document.getElementById('biweeklyInput'),
   annual: document.getElementById('yearlyInput'),
 };
 const coverageInput = document.getElementById('medicalCoverage');
 const planInput = document.getElementById('medicalPlan');
 const coveredInput = document.getElementById('medicalCovered');
-const resultIds = ['vacationTotal', 'sickTotal', 'floatingHolidayTotal',
-  'holidayTotal', 'retirementTotal', 'premiumTotal', 'contributionTotal', 'totalCompensation'];
+const increaseInput = document.getElementById('salaryIncrease');
+const resultIds = ['retirementTotal', 'premiumTotal', 'contributionTotal', 'totalCompensation'];
 let lastInputSource = 'hourly';
 let pieChart;
 
@@ -74,10 +76,10 @@ function readSalary() {
   const input = salaryInputs[lastInputSource];
   if (input.value.trim() === '' || input.validity.badInput) return null;
   const value = Number(input.value);
-  const annual = value * {hourly: 2080, biweekly: 26, annual: 1}[lastInputSource];
+  const annual = value * {hourly: annualPayMultiplier, annual: 1}[lastInputSource];
   // Leave enough headroom for benefit totals as well as salary conversions.
   if (!Number.isFinite(annual * 2) || value < 0) return null;
-  return {hourly: annual / 2080, biweekly: annual / 26, annual};
+  return {hourly: annual / annualPayMultiplier, annual};
 }
 
 function calculate(source) {
@@ -93,8 +95,19 @@ function calculate(source) {
   return salary;
 }
 
+function readPreviewSalary() {
+  const salary = readSalary();
+  const percent = Number(increaseInput.value);
+  if (!salary || increaseInput.value === '' || !Number.isFinite(percent)
+      || percent < 0 || percent > 10 || !Number.isInteger(percent * 2)) return null;
+  const annual = salary.annual + salary.annual * percent / 100;
+  if (!Number.isFinite(annual * 2)) return null;
+  return {hourly: annual / annualPayMultiplier, annual};
+}
+
 function validateInputs() {
   if (!readSalary()) return {field: salaryInputs[lastInputSource], message: 'Enter a salary of zero or more in one of the salary fields.'};
+  if (!readPreviewSalary()) return {field: increaseInput, message: 'Select a pay increase from the dropdown.'};
   if (!['Yes', 'No'].includes(coverageInput.value)) return {field: coverageInput, message: 'Select whether you want medical coverage.'};
   if (coverageInput.value === 'Yes') {
     if (!medicalPlans[planInput.value]) return {field: planInput, message: 'Select a medical plan.'};
@@ -104,6 +117,9 @@ function validateInputs() {
 }
 
 function updateFormState() {
+  const preview = readPreviewSalary();
+  document.getElementById('raisedHourly').textContent = preview ? money.format(preview.hourly) : '—';
+  document.getElementById('raisedAnnual').textContent = preview ? money.format(preview.annual) : '—';
   const wantsCoverage = coverageInput.value === 'Yes';
   planInput.disabled = coveredInput.disabled = !wantsCoverage;
   planInput.required = coveredInput.required = wantsCoverage;
@@ -123,7 +139,7 @@ function updateFormState() {
   // Clear estimates after an edit so every displayed value describes the same inputs.
   for (const id of resultIds) document.getElementById(id).textContent = '—';
   // Keep the equal-slice preview visible until Calculate supplies actual values.
-  drawChart(1, 1, 1, 1);
+  drawChart(1, 1, 1);
 }
 
 function setValues() {
@@ -133,33 +149,27 @@ function setValues() {
     error.field.focus();
     return null;
   }
-  const {hourly, annual: pay} = readSalary();
-  const vacation = hourly * 80;
-  const sick = hourly * 104;
-  const floatingHoliday = hourly * 16;
-  const holiday = hourly * 112;
+  const {annual: pay} = readPreviewSalary();
   const retirementContribution = pay * 0.07 * 2.5;
-  const pto = vacation + sick + floatingHoliday + holiday;
   const medical = coverageInput.value === 'Yes'
     ? medicalPlans[planInput.value][coveredInput.value]
     : {premium: 0, contribution: 0};
   const values = {
-    vacationTotal: vacation, sickTotal: sick, floatingHolidayTotal: floatingHoliday,
-    holidayTotal: holiday, retirementTotal: retirementContribution,
+    retirementTotal: retirementContribution,
     premiumTotal: medical.premium, contributionTotal: medical.contribution,
     totalCompensation: pay + retirementContribution + medical.contribution,
   };
   for (const [id, value] of Object.entries(values)) {
     document.getElementById(id).textContent = money.format(value);
   }
-  drawChart(pay - pto, pto, retirementContribution, medical.contribution);
+  drawChart(pay, retirementContribution, medical.contribution);
   return values;
 }
 
-function drawChart(salary, pto, retirementContribution, contributionTotal) {
+function drawChart(salary, retirementContribution, contributionTotal) {
   // Calculations remain usable if a chart dependency cannot load.
   if (typeof Chart === 'undefined') return;
-  const data = [salary, pto, retirementContribution, contributionTotal];
+  const data = [salary, retirementContribution, contributionTotal];
   if (pieChart) {
     pieChart.data.datasets[0].data = data;
     pieChart.update();
@@ -169,12 +179,10 @@ function drawChart(salary, pto, retirementContribution, contributionTotal) {
   pieChart = new Chart(ctx, {
     type: 'pie',
     data: {
-      labels: ['Salary', 'PTO', 'Retirement', 'Benefits'],
+      labels: ['Salary', 'Retirement', 'Benefits'],
       datasets: [{
         data,
-        backgroundColor: ['#8CB7CF',
-          typeof pattern === 'undefined' ? '#A6CBDD' : pattern.draw('diagonal', '#8CB7CF'),
-          '#709445', '#DDDBD5'],
+        backgroundColor: ['#8CB7CF', '#709445', '#DDDBD5'],
         borderWidth: 1,
       }],
     },
@@ -213,6 +221,7 @@ for (const [source, input] of Object.entries(salaryInputs)) {
 for (const input of [coverageInput, planInput, coveredInput]) {
   input.addEventListener('change', updateFormState);
 }
+increaseInput.addEventListener('change', updateFormState);
 const calculateButton = document.getElementById('calculateButton');
 calculateButton.removeAttribute('onclick');
 calculateButton.setAttribute('type', 'button');

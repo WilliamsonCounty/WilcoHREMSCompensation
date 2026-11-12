@@ -42,16 +42,15 @@ label {font-weight: 700;text-wrap: pretty;}
 .smallQuickLinks li {display: inline-block;background-color: var(--wc-light_blue);padding: .25em .5em;border-radius: 5px;}
 .smallQuickLinks a {text-decoration: none;color: var(--wc-dark-grey);}
 .salaryPTO {margin-bottom: 1.5em;}
-#salaryGroup {display: flex;gap:1em;width: 100%;flex-wrap: wrap;}
+#salaryGroup {display: grid;grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);gap:1em;width: 100%;align-items: end;}
 .salaryInput {display: flex;flex-direction: column;width: 25%;}
 .salaryInput input {width: 100%;min-width: 0;box-sizing: border-box;}
 #pto {display: flex;flex-direction: column;}
-.ptoContainer {container: pto/inline-size; display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; width: 100%; justify-content: space-around;gap: 1em; 
+.ptoContainer {container: pto/inline-size; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); width: 100%; justify-content: space-around;gap: 1em;
 	.nonfillableContainer {display: flex; flex-direction: column;background-color: var(--wc-tan); /*width: 25cqw;*/align-items: center;border-radius: 5px;
 	& p {margin: 0;}
 }
 }
-.ptoNumberContainer {display: flex;flex-direction: column;justify-content: space-around;}
 #retirement {display: flex;flex-direction: column;}
 .retirementNonfillable {display: grid;grid-template-columns: 1fr 1fr 1fr 1fr;gap: 1em;width: 100%;
 	& .nonfillableContainer {background-color:var(--wc-tan); /*width: 25%;*/align-items: center;border-radius:5px;
@@ -63,15 +62,20 @@ label {font-weight: 700;text-wrap: pretty;}
 & .nonfillableContainer {background-color:var(--wc-tan); /*width: 25%;*/align-items: center;border-radius:5px;
 	& p {margin: 0;}}
 }
-.ptoNumbers {font-weight: 700;}
 .retirementNumbers {font-weight: 700;}
 .medicalNumbers {font-weight:700;}
 .labelInputPair {display: flex;flex-direction: column;/*align-items: center;*/width: 30%;/*margin-bottom: 0.5em;*/}
 .labelSelectPair {display: flex;flex-direction: column;/*align-items: center;*/width: 30%;margin-bottom: 0.5em;}
-#salaryGroup>.labelInputPair {display: flex;flex-direction: column;/*align-items: center;*/width: 24%;margin-bottom: 0.5em;justify-content: flex-end;}
+#salaryGroup>.labelInputPair {display: flex;flex-direction: column;width: 100%;min-width: 0;margin-bottom: 0.5em;justify-content: flex-end;}
 .inputGroup {display: flex;gap: 2em;}
 .or {font-weight: bold; align-content: center;}
 #totalCompensation {font-weight: 700; color: var(--wc-main); font-size: 1.25rem;}
+.compensationSummary {width: 100%;min-width: 0;}
+.raisePreview {width: 100%;margin-top: 1rem;}
+.raisePreview select {display: block;max-width: 18rem;margin-top: .25rem;}
+.raiseAmounts {display: flex;flex-wrap: wrap;gap: .5rem 2rem;}
+.raiseAmounts p {margin: 0;}
+.raiseAmounts output {font-weight: 700;}
 #submitBtn {padding: 10px;
 :hover {cursor: pointer;}
 }
@@ -163,7 +167,7 @@ label {font-weight: 700;text-wrap: pretty;}
 	main {width: auto;}
 	/* .mainAndSidebar {flex-direction: column;} */
 	.annualSalary {display: flex;flex-direction: column;width: 100%;}
-	#salaryGroup {flex-direction: column;/*align-items: center;*/gap:0;
+	#salaryGroup {display: flex;flex-direction: column;gap:0;
 	& .labelInputPair {width: 100%;}}
 	.salaryInput {width: 100%;}
 	.or {padding: 5px;margin: 0;text-align: center;}
